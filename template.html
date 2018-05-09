@@ -1,0 +1,17 @@
+<img class="movie__poster" src="{{$ctrl.movie.Poster}}" alt="{{$ctrl.movie.Title}} poster">
+<div class="movie__wrapper--content">
+	<div>
+		<h2 class="movie__title">{{$ctrl.movie.Title}}</h2>
+	<div class="movie__details">
+		<div class="wrapper--flex">
+			<div class="movie__rating">{{$ctrl.movie.Rated}}</div>
+			<div class="movie__runtime">{{$ctrl.movie.Runtime}}</div>
+		</div>
+		<div>{{$ctrl.movie.Released}}</div>
+	</div>
+	<div class="movie__plot">{{$ctrl.movie.Plot}}</div>
+	</div>
+	<a class="movie__link"  target="_blank" href="http://www.imdb.com/title/{{ $ctrl.movie.imdbID }}">
+		View on IMBD
+	</a>
+</div>

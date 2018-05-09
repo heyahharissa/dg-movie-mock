@@ -5,6 +5,8 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <title>Movies</title>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="content/styles/css/style.css">
 
 <script src="https://az168019.vo.msecnd.net/scripts/libs/modernizr.custom.js"></script>
     <!--[if lte IE 8]>
@@ -15,9 +17,31 @@
     <![endif]-->
 </head>
 <body ng-app="dgMovieApp">
+	<main ng-controller="mainCtrl" class="main__wrapper">
+		<ul class="movie__list">
+			<div class="btn-group">
+				<button ng-click="toggleTwoThousands()"
+					ng-class="{ 'btn--is-active': twoThousands }"
+					class="btn--toggle">2000's</button>
+				<button ng-click="toggleNineties()"
+					ng-class="{ 'btn--is-active': nineties }"
+					class="btn--toggle">1990's</button>
+			</div>
+			<li ng-repeat="movie in allMovies | orderBy: 'Year'" 
+				ng-show="!nineties && !twoThousands">
+				<movie-info movie="movie" class="movie__wrapper"></movie-info>
+			</li>
+			<li ng-repeat="movie in moviesWithDetailNineties | orderBy: 'Year'" 
+				ng-show="nineties">
+				<movie-info movie="movie" class="movie__wrapper"></movie-info>
+			</li>
+			<li	ng-show="twoThousands"
+				ng-repeat="movie in moviesWithDetailTwoThousands | orderBy: 'Year'">
+				<movie-info movie="movie" class="movie__wrapper"></movie-info>
+			</li>
+		</ul>
 
-
-
+	</main>
 
 
 <!--[if gt IE 8]><!-->
@@ -26,7 +50,7 @@
 <!--[if lte IE 8]>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <![endif]-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.18/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
 <script src="scripts/app.js"></script>
 </body>
 </html>
